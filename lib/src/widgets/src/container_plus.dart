@@ -147,7 +147,7 @@ class _ContainerPlusState extends State<ContainerPlus> {
   @override
   void initState() {
     // close previus keyboard (add to navigatorObservers)
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       // delay principalmente para casos por exemplo que o teclado está aberto
       Future.delayed(Duration(microseconds: 50), _afterLayout);
     });
@@ -203,8 +203,7 @@ class _ContainerPlusState extends State<ContainerPlus> {
         borderRadius: _buildRadius(),
         child: _buildInnerShadow(
           Padding(
-            padding:
-                skeletonEnabled == true ? EdgeInsets.all(0) : widget.padding,
+            padding: skeletonEnabled == true ? EdgeInsets.all(0) : widget.padding,
             child: skeletonEnabled == true ? _buildSkeleton() : _buildChild(),
           ),
         ),
@@ -345,9 +344,7 @@ class _ContainerPlusState extends State<ContainerPlus> {
     if (widget.shadows == null || skeletonShowShadow == false) return [];
     return widget.shadows!.map((shadow) {
       return BoxShadow(
-        color: shadow.opacity != null
-            ? shadow.color.withOpacity(shadow.opacity!)
-            : shadow.color,
+        color: shadow.opacity != null ? shadow.color.withOpacity(shadow.opacity!) : shadow.color,
         blurRadius: shadow.blur,
         spreadRadius: shadow.spread,
         offset: Offset(
@@ -421,9 +418,7 @@ class _ContainerPlusState extends State<ContainerPlus> {
   }
 
   bool get skeletonEnabled {
-    if (widget.skeleton != null &&
-        widget.skeleton!.enabled == true &&
-        _containerSize != null) {
+    if (widget.skeleton != null && widget.skeleton!.enabled == true && _containerSize != null) {
       return true;
     } else {
       return false;
